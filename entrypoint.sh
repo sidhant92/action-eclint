@@ -27,4 +27,11 @@ JENKINS_URL=1 BUILD_ID=1 CI_REPORTS="$TARGET_FOLDER" \
 
 # Extract result from file or fallback if file does not exist
 (cat $TARGET_FOLDER/*/checkstyle-result.xml 2>/dev/null || echo '<checkstyle></checkstyle>') | \
-  reviewdog -f=checkstyle -name="eclint" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}"
+  reviewdog \
+    -efm="%f:%l:%c: %m" \
+    -name "eclint" \
+    -reporter="${INPUT_REPORTER:-github-pr-check}" \
+    -level="${INPUT_LEVEL}" \
+    -filter-mode="${INPUT_FILTER_MODE}" \
+    -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
+    ${INPUT_REVIEWDOG_FLAGS}

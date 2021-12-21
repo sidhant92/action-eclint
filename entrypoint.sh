@@ -8,6 +8,10 @@ eclint --version
 
 TARGET_FOLDER=$(mktemp -d -t reviewdog-eclint-XXXXXXXXXX)
 
+
+
+eclint check src/
+
 # Make eclint think that we are Jenkins to get Checksuite type output
 JENKINS_URL=1 BUILD_ID=1 CI_REPORTS="$TARGET_FOLDER" \
   eclint check ${INPUT_ECLINT_FLAGS:-'.'} 2>/dev/null

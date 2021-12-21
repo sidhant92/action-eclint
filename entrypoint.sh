@@ -4,6 +4,9 @@ cd "$GITHUB_WORKSPACE"
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
+
+ls -la
+
 eclint --version
 
 TARGET_FOLDER=$(mktemp -d -t reviewdog-eclint-XXXXXXXXXX)
